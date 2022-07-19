@@ -4,7 +4,6 @@ const meetUpController ={};
 
 meetUpController.allMeetups = (req, res, next) => {
 
-
     const sqlQuerie = 'SELECT * FROM meetups ';
     db.query(sqlQuerie)
     .then(data => {
@@ -15,7 +14,7 @@ meetUpController.allMeetups = (req, res, next) => {
     .catch(err=>({error: err}))
 }
 
-meetUpController.allUserEntries = (req, res, next) => {
+meetUpController.allUserEntries = (req, res, next) => { // query using SSID = user_id
 
   const {username} = req.query;
 
