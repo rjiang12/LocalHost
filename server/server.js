@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express');
 
 const cors = require('cors')
-const apiRouter = require('./routes/routes');
+const eventRouter = require('./routes/eventRouter.js');
+const userRouter = require('./routes/userRouter.js');
 const app = express();
 const PORT = 3000;
 
@@ -11,12 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/hello', (req, res) => {
-    res.status(200).json('good job you have successfuly made a get request')
-})
-
-
-app.use('/', apiRouter);
+app.use('/', userRouter);
+app.use('/event/', eventRouter);
 
 
 app.use((req, res) => {
