@@ -8,11 +8,11 @@ import '../css/EventMaker.css';
 const EventMaker = () => {
   //TO DO: SEND A POST REQUEST TO CREATE NEW EVENT 
   //TO DO: STRING MANIPULATION FOR DATE AND TIME
-  const [activity, setActivity] = useState('');
+  const [activity, setActivity] = useState(''); // take a default value: maybe 'new activity'? 
   const [startDate, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().getTime());
   const [endTime, setEndTime] = useState(new Date().getTime());
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState(''); // take a default value: maybe 'No details provided'?
 
   const addEvent = () => {
     console.log({startDate});
