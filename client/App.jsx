@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.jsx"
 import Home from './components/Home.jsx';
 import EventsContainer from './containers/EventsContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx'
-import EventsMaker from './components/EventMaker.jsx';
+import EventMaker from './components/EventMaker.jsx';
 import LoginSignup from "./components/LoginSignup.jsx"
 
 const App = () => {
