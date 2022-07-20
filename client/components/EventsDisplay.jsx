@@ -1,12 +1,19 @@
 import React from 'react';
 import Event from './Event'
 
-const EventsDisplay = () => {
+const EventsDisplay = ({eventsData}) => {
 
+    if (!eventsData.length) return (
+        <div>Sorry, no events planned yet!</div>
+    );
 
     return (
         <div className = "EventsDisplay">
-            <Event/>
+            {
+                eventsData.map((event) => (
+                    <Event event = {event}/>
+                ))
+            }
         </div>
     )
 }

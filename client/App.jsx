@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 import Navbar from "./components/Navbar"
 import Home from './components/Home';
-import EventsContainer from './components/EventsContainer';
-import ProfileContainer from './components/ProfileContainer'
-import EventsMaker from './components/EventsMaker';
+import EventsContainer from './containers/EventsContainer';
+import ProfileContainer from './containers/ProfileContainer'
+import EventsMaker from './components/EventMaker';
 import LoginSignup from "./components/LoginSignup"
 
 const App = () => {
