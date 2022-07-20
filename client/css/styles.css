@@ -6,6 +6,7 @@ html, body {
     width: 100%;
 }
 
+/* login/signup */
 .LoginSignup {
     display: grid;
     background-image: linear-gradient(135deg,#2b5876,#4e4376);
@@ -85,3 +86,4 @@ html, body {
     color: lightgray;
     background-color: #2b5876;
 }
+
