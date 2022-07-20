@@ -7,13 +7,13 @@ const userRouter = express.Router();
 userRouter.post('/signup', 
     userController.createUser, 
     cookieController.setUserSSIDCookie, (req, res) => {
-    return res.status(200).send(res.locals.ssid); // return ssid instead
+    return res.status(200).send(); // return ssid instead
 });
 
 userRouter.post('/login', 
     userController.verifyUser, 
     cookieController.setUserSSIDCookie, (req, res) => {
-        return res.status(200).send(res.locals.ssid); // return ssid instead
+        return res.status(200).send(); // return ssid instead
 });
 
 module.exports = userRouter;

@@ -12,8 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+app.use('/event', eventRouter);
 app.use('/', userRouter);
-app.use('/event/', eventRouter);
+
 
 // app.use(function(req, res, next) {
 //   req.header("Access-Control-Allow-Origin: http://localhost:8080");

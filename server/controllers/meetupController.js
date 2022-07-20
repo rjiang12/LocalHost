@@ -6,7 +6,7 @@ const meetUpController ={};
 meetUpController.getCurrentEvents = async (req, res, next) => {
   try {
     const user_id = req.body.user_id;
-    const sqlQuerry = `SELECT * FROM Events WHERE date >= GETDATE() AND user_id=${user_id}`;
+    const sqlQuery = `SELECT * FROM Events WHERE date >= CURRENT_DATE AND user_id=${user_id}`;
     const currentEvents = await db.query(sqlQuery);
     res.locals.currentEvents = currentEvents.rows;
     return next();
@@ -20,7 +20,7 @@ meetUpController.getCurrentEvents = async (req, res, next) => {
 meetUpController.getPastEvents = async (req, res, next) => {
   try {
     const user_id = req.body.user_id; // or whatever the key will be
-    const sqlQuery = `SELECT * FROM Events WHERE date < GETDATE() AND user_id=${user_id}`; 
+    const sqlQuery = `SELECT * FROM Events WHERE date < CURRENT_DATE AND user_id=${user_id}`; 
     const pastEvents = await db.query(sqlQuery);
     res.locals.pastEvents = pastEvents.rows; 
     return next(); 
@@ -33,9 +33,10 @@ meetUpController.getPastEvents = async (req, res, next) => {
 
 meetUpController.getEvents = async (req, res, next) => {
   try {
-    const { date, activity, time } = req.query; // might be req.body. 
+    const { startDate, activity, time } = req.body; // might be req.body.
+    console.log(req.body); 
     // assumes no null values -> default values must be supplied in FE if null. 
-    const sqlQuery = `SELECT * FROM Events WHERE date=${date} AND title=${activity} AND (${time} >= startTime AND ${time} < endTime)`; 
+    const sqlQuery = `SELECT * FROM Events WHERE date='${startDate}' AND title='${activity}' AND ('${time}' >= startTime AND '${time}' < endTime)`; 
     const events = await db.query(sqlQuery);
     res.locals.events = events.rows;
     return next(); 
@@ -48,11 +49,13 @@ meetUpController.getEvents = async (req, res, next) => {
 
 meetUpController.postEvent = async (req, res, next) => {
   try {
-    const { activity, startDate, startTime, endTime, description } = req.body; 
-    const params = [startTime, endTime, activity, description, startDate];
+
+    let { activity, startDate, startTime, endTime, description, id } = req.body; 
+    const params = [startTime, endTime, activity, description, startDate, id];
+    console.log(params); 
     const sqlQuery = `
-      INSERT INTO Events (startTime, endTime, title, description, date)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *; 
+      INSERT INTO Events (startTime, endTime, title, description, date, user_id)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING *; 
     `; 
     const createdEvent = await db.query(sqlQuery, params); 
     res.locals.createdEvent = createdEvent.rows; 
@@ -60,7 +63,7 @@ meetUpController.postEvent = async (req, res, next) => {
   }
   catch {
     console.log('caught something in postEvents');
-    return next('could not post the event');
+    return next({err: 'could not post the event'});
   }
 }
 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../css/inputs.css';
+import axios from 'axios';
 
 const EventsSearcher = props => {
     const { setEventsData } = props;
@@ -11,12 +12,10 @@ const EventsSearcher = props => {
     //function to run when button is clicked
     const getEventsData = async () => {
       try {
-        const response = await axios.post('/event',{
-            body: {
+        const response = await axios.post('/event/getEvents',{
               activity: activity,  
               startDate: startDate,
               time: time
-            }
         })
         setEventsData(response.data);
       } catch (error) {
