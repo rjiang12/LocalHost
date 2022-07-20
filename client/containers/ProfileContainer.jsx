@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+
 import ProfilePictureDisplay from '../components/ProfilePictureDisplay'
 import ProfileStatsDisplay from '../components/ProfileStatsDisplay'
 import ProfileCurrentEventsDisplay from '../components/ProfileCurrentEventsDisplay'

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import axios from 'axios';
-import Navbar from "./components/Navbar"
-import Home from './components/Home';
-import EventsContainer from './containers/EventsContainer';
-import ProfileContainer from './containers/ProfileContainer'
-import EventMaker from './components/EventMaker';
-import LoginSignup from "./components/LoginSignup"
+
+import Navbar from "./components/Navbar.jsx"
+import Home from './components/Home.jsx';
+import EventsContainer from './containers/EventsContainer.jsx';
+import ProfileContainer from './containers/ProfileContainer.jsx'
+import EventsMaker from './components/EventMaker.jsx';
+import LoginSignup from "./components/LoginSignup.jsx"
 
 const App = () => {
   // NOTE: Do we need to store anything else from userTable besides ID?
