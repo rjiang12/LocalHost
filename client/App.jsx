@@ -43,10 +43,10 @@ const App = () => {
           <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route path = "/" component = {<Home/>}/>
-                <Route path = "/events" component = {<EventsContainer/>}/>
-                <Route path = "/profile" component = {<ProfileContainer/>}/>
-                <Route path = "/makeEvent" component = {<EventMaker/>}/>
+                <Route path = "/" element = {<Home/>}/>
+                <Route path = "/me" element = {<ProfileContainer userEvents = {userEvents}/>}/>
+                <Route path = "/findEvents" element = {<EventsContainer/>}/>
+                <Route path = "/hostEvents" element = {<EventMaker/>}/>
             </Routes>
           </BrowserRouter>
       </div> )
