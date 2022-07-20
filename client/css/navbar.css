@@ -1,0 +1,8 @@
+/* Random styling for now for testing */ 
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
