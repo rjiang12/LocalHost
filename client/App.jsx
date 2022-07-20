@@ -54,7 +54,7 @@ const App = () => {
   else {
     return (
       <div className = "App">
-        <LoginSignup loggedIn={loggedIn} changeLoginState={setLoggedIn} />
+        <LoginSignup loggedIn={loggedIn} setLoggedin={setLoggedIn} />
       </div>
     )
   }
