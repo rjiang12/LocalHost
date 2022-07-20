@@ -5,10 +5,10 @@ const Event = ({event}) => {
 
     return (
         <div className = "Event">
-            Activity: <p>{event.activity}</p>
-            Date: <p>{event.date}</p>
-            Start Time: <p>{event.startTime}</p>
-            End Time: <p>{event.endTime}</p>
+            Activity: <p>{event.title}</p>
+            Date: <p>{event.date.slice(0, 10)}</p>
+            Start Time: <p>{event.starttime}</p>
+            End Time: <p>{event.endtime}</p>
             Description: <p>{event.description}</p>
         </div>
     )

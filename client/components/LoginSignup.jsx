@@ -1,7 +1,6 @@
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+import '../css/styles.css'
 
 // https://github.com/Yeti-Crab34/FinanceTracker/blob/main/client/react/Login.jsx
 const LoginSignup = props => {
@@ -23,10 +22,8 @@ const LoginSignup = props => {
           },
         }, 
       );
-      console.log(status);
       // After successful login:
-      // TO DO: SET USER ID TO COOKIE ID
-      document.cookie.slice(document.cookie.indexOf('=') + 1)
+      props.setUserID(document.cookie.slice(document.cookie.indexOf('=') + 1));
       if (status) props.setLoggedIn(true); // route to homepage
       else console.log('Error logging in');
     }
@@ -47,7 +44,7 @@ const LoginSignup = props => {
         },
       }
       );
-      console.log(status);
+
       // After successful signup:
       if (status) props.setLoggedIn(true); //route to homepage
       else console.log('error signing up');

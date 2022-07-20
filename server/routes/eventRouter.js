@@ -1,17 +1,17 @@
 const express = require('express');
-const meetUpController = require('../controllers/meetupController')
+const meetUpController = require('../controllers/meetupController.js')
 const eventRouter = express.Router();
 
 // current events router
-eventRouter.get('/currentEvent', meetUpController.getCurrentEvents, (req, res) => {
+eventRouter.post('/currentEvents', meetUpController.getCurrentEvents, (req, res) => {
     res.status(200).send(res.locals.currentEvents);
 })
 // past events router
-eventRouter.get('/pastEvents', meetUpController.getPastEvents, (req, res) => {
+eventRouter.post('/pastEvents', meetUpController.getPastEvents, (req, res) => {
     res.status(200).send(res.locals.pastEvents); 
 })
 
-eventRouter.get('/getEvents', meetUpController.getEvents, (req, res) => {
+eventRouter.post('/getEvents', meetUpController.getEvents, (req, res) => {
     res.status(200).send(res.locals.events); 
 })
 

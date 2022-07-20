@@ -6,31 +6,28 @@ import "react-datepicker/dist/react-datepicker.css";
 import '../css/inputs.css';
 
 const EventMaker = props => {
-  //TO DO: SEND A POST REQUEST TO CREATE NEW EVENT 
   const [activity, setActivity] = useState(''); // take a default value: maybe 'new activity'? 
   const [startDate, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().getTime());
   const [endTime, setEndTime] = useState(new Date().getTime());
   const [description, setDescription] = useState(''); // take a default value: maybe 'No details provided'?
 
-  const { userCurrentEvents, setUserCurrentEvents} = props;
+  const { userCurrentEvents, setUserCurrentEvents, userID} = props;
 
   const addEvent = async (values) => {
-    // TO DO: TEST BODY OF AXIOS REQUEST TO POST EVENT
     try {
-      const response = await axios.post('/event',{
-          body: { 
-            activity: activity,
-            startDate: startDate,
-            startTime: startTime,
-            endTime: endTime,
-            description: description 
-          }
+      const response = await axios.post('/event/postEvent',{
+        activity: activity,
+        startDate: startDate,
+        startTime: startTime,
+        endTime: endTime,
+        description: description,
+        id: userID
       });
       setUserCurrentEvents([...userCurrentEvents, response]);
-
+      console.log(response);
   } catch (error) {
-      console.log('error in searching for events function')
+    console.log('error in making events function')
   }
   }
 

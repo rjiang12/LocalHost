@@ -1,12 +1,14 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-
+import axios from 'axios';
+import './css/styles.css'
 import Navbar from "./components/Navbar.jsx"
 import Home from './components/Home.jsx';
 import EventsContainer from './containers/EventsContainer.jsx';
 import ProfileContainer from './containers/ProfileContainer.jsx'
 import EventMaker from './components/EventMaker.jsx';
-import LoginSignup from "./components/LoginSignup.jsx"
+import LoginSignup from "./components/LoginSignup.jsx";
+
 
 const App = () => {
   // NOTE: Do we need to store anything else from userTable besides ID?
@@ -24,19 +26,38 @@ const App = () => {
       userEvents state once a new event is created.
   */
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userEvents, setUserEvents] = useState([]);
+  // const [userEvents, setUserEvents] = useState([]);
   const [userCurrentEvents, setUserCurrentEvents] = useState([]);
   const [userPastEvents, setUserPastEvents] = useState([]);
   
-  // TO DO MOVE THIS TO LOGIN/SIGN UP AS WELL AS PASS DOWN RELEVANT STATE
-  const getUserEvents = async () => {
+
+  const getCurrentEvents = async () => {
     try {
-      const { data } = await axios.get('/');
-      setUserEvents(data);
+      const { data } = await axios.post('/event/currentEvents', {user_id: userID});
+      setUserCurrentEvents(data);
+      console.log('currentevents:', data)
     } catch(err) {
-      console.log('Sorry there was an error retrieving your events.');
+      console.log('Sorry there was an error retrieving your current events.');
     }
   } 
+
+  const getPastEvents = async () => {
+    try {
+      const { data } = await axios.post('/event/pastEvents',  {user_id : userID});
+      setUserPastEvents(data);
+      console.log('pastevents: ', data);
+    } catch(err) {
+      console.log('Sorry there was an error retrieving your past events.');
+    }
+  } 
+
+  useEffect(() => {
+    if(loggedIn) {  
+      getCurrentEvents();
+      getPastEvents();
+    }
+    },[loggedIn]
+  ); 
  
   //If logged in render Navbar and router
   if(loggedIn){
@@ -46,9 +67,9 @@ const App = () => {
             <Navbar />
             <Routes>
                 <Route path = "/" element = {<Home/>}/>
-                <Route path = "/me" element = {<ProfileContainer userEvents = {userEvents}/>}/>
+                <Route path = "/me" element = {<ProfileContainer userPastEvents= {userPastEvents} userCurrentEvents = {userCurrentEvents}/>}/>
                 <Route path = "/findEvents" element = {<EventsContainer/>}/>
-                <Route path = "/hostEvents" element = {<EventMaker userCurrentEvents={userCurrentEvents} setUserCurrentEvents={setUserCurrentEvents}/>}/>
+                <Route path = "/hostEvents" element = {<EventMaker userCurrentEvents={userCurrentEvents} setUserCurrentEvents={setUserCurrentEvents} userID={userID}/>}/>
             </Routes>
           </BrowserRouter>
       </div> )
@@ -56,7 +77,7 @@ const App = () => {
   else {
     return (
       <div className = "App">
-        <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+        <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserID={setUserID} />
       </div>
     )
   }
