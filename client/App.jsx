@@ -1,100 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import MainContainer from "./containers/MainContainer"
-// import Form from './components/Form'
-// import Login from './components/Login'
-// import Matches from './components/Matches'
+import React, { useState, useEffect, createContext } from 'react';
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+
+import Navbar from "./components/Navbar"
+import Home from './components/Home';
+import EventsContainer from './components/EventsContainer';
+import ProfileContainer from './components/ProfileContainer'
+import EventsMaker from './components/EventsMaker';
+import LoginSignup from "./components/LoginSignup"
 
 const App = () => {
-    // const [day, setDay] = useState('');
-    // const [activity, setActivity] = useState('');
-    // const [username, setUsername] = useState('bencauffman');
-    // const [userEntries, setUserEntries] = useState([]);
-    // const [first, setFirst] = useState('');
-    // const [last, setLast] = useState('');
-    
-
+  // NOTE: Do we need to store anything from userTable?
+  const [user, setUser] = useState('');
+  // Store events in userEvents State
+  const [userEvents, setUserEvents] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
+  
+  //If logged in render Navbar and router
+  if(loggedIn){
     return ( 
-        <div className = "App">
-            <Router>
-                <Route path = "/" component = {MainContainer}/>
-                <Route/>
-                <Route/>
-            </Router>
-
-        </div>
+      <div className = "App">
+          <Navbar/>
+          <BrowserRouter>
+            <Routes>
+                <Route path = "/" component = {<Home/>}/>
+                <Route path = "/events" component = {<EventsContainer/>}/>
+                <Route path = "/profile" component = {<ProfileContainer/>}/>
+                <Route path = "/makeevent" component = {<EventsMaker/>}/>
+            </Routes>
+          </BrowserRouter>
+      </div> )
+  } // If not logged in render the LoginSignup component
+  else {
+    return (
+      <div className = "App">
+        <LoginSignup />
+      </div>
     )
-
+  }
 }
 
 export default App;
 
-    // return (
-    //     <div id='main'>
-        
-       
-    //         <nav>
-    //             <div id='title'>Goblin Finder</div>
-    //             <div id='links'>
-    //             <Link to="/">
-    //                 Home
-    //             </Link>
-    //             <Link to="/form">
-    //                 Profile
-    //             </Link>
-                
-    //             <Link to="/matches">
-    //                 Matches
-    //             </Link>
-    //             </div>
-
-    //         </nav>
-    //         <Routes>
-    //             <Route
-    //                 path="/"
-    //                 element={<Login
-    //                     day={day}
-    //                     setDay={setDay}
-    //                     activity={activity}
-    //                     setActivity={setActivity}
-    //                     userEntries={userEntries}
-    //                     setUserEntries={setUserEntries}
-    //                     username={username}
-    //                     setUsername={setUsername}
-    //                     />}
-    //                 />
-    //             <Route
-    //                 path="/form"
-    //                 element={<Form
-    //                     day={day}
-    //                     setDay={setDay}
-    //                     activity={activity}
-    //                     setActivity={setActivity}
-    //                     userEntries={userEntries}
-    //                     setUserEntries={setUserEntries}
-    //                     username={username}
-    //                     setFirst={setFirst}
-    //                     setLast={setLast}
-    //                     first={first}
-    //                     last={last}
-    //                 />}
-    //             />
-    //             <Route
-    //                 path="/matches"
-    //                 element={<Matches
-    //                     day={day}
-    //                     setDay={setDay}
-    //                     activity={activity}
-    //                     setActivity={setActivity}
-    //                     userEntries={userEntries}
-    //                     setUserEntries={setUserEntries}
-    //                     username={username}
-    //                     first={first}
-    //                     last={last}
-    //                 />}
-    //             />
-    //         </Routes>
-            
-    //     </div>
-    // )
 

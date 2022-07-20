@@ -6,8 +6,5 @@ const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
 root.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter >  
+    <App />
 );
-// root.render(<App />);
