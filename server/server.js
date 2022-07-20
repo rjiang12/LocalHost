@@ -7,13 +7,20 @@ const userRouter = require('./routes/userRouter.js');
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors({origin: 'http://localhost:8080'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/', userRouter);
 app.use('/event/', eventRouter);
+
+// app.use(function(req, res, next) {
+//   req.header("Access-Control-Allow-Origin: http://localhost:8080");
+//   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   req.header("Access-Control-Allow-Credentials", "true");
+//   next();
+// });
 
 
 app.use((req, res) => {
