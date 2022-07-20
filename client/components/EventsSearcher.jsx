@@ -25,7 +25,7 @@ const EventsSearcher = () => {
     //function to run when button is clicked
     const getEventsData = async () => {
       try {
-        const response = await axios.get('/api/event/',{
+        const response = await axios.get('/event/getEvents',{
             params: {
                 date: date,
                 activity: activity,
