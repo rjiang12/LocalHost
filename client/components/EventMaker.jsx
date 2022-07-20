@@ -26,7 +26,7 @@ const EventMaker = props => {
             endTime: endTime,
             description: description 
           }
-      })
+      });
       setUserCurrentEvents([...userCurrentEvents, response]);
 
   } catch (error) {

@@ -39,7 +39,7 @@ const App = () => {
   } 
  
   //If logged in render Navbar and router
-  if(true){
+  if(loggedIn){
     return ( 
       <div className = "App">
           <BrowserRouter>
@@ -56,7 +56,7 @@ const App = () => {
   else {
     return (
       <div className = "App">
-        <LoginSignup loggedIn={loggedIn} setLoggedin={setLoggedIn} />
+        <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
       </div>
     )
   }
