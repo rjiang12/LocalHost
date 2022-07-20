@@ -22,7 +22,11 @@ const EventMaker = props => {
     try {
       const response = await axios.post('/event',{
           body: { 
-            ...values
+            activity: activity,
+            startDate: startDate,
+            startTime: startTime,
+            endTime: endTime,
+            description: description 
           }
       })
       setUserCurrentEvents([...userCurrentEvents, response]);

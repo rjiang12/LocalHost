@@ -13,16 +13,15 @@ const EventsSearcher = props => {
       try {
         const response = await axios.post('/event',{
             body: {
-                date: date,
-                activity: activity,
-                time: time
-              }
+              activity: activity,  
+              startDate: startDate,
+              time: time
+            }
         })
         setEventsData(response.data);
-
-    } catch (error) {
-        console.log('error in searching for events function')
-    }
+      } catch (error) {
+          console.log('error in searching for events function')
+      }
     }
 
     return (
