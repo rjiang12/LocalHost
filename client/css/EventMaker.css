@@ -1,0 +1,26 @@
+.event-maker-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.event-maker-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+}
+
+.label-and-picker-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#description-input {
+  width: 100%;
+  padding: 20px 10px;
+  line-height: 48px;
+}
