@@ -3,20 +3,33 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 // import required react-datepicker styling file
 import "react-datepicker/dist/react-datepicker.css";
-import '../css/EventMaker.css';
+import '../css/inputs.css';
 
-const EventMaker = () => {
+const EventMaker = props => {
   //TO DO: SEND A POST REQUEST TO CREATE NEW EVENT 
-  //TO DO: STRING MANIPULATION FOR DATE AND TIME
+  
+  // Declaring states for each input needed to make an event
   const [activity, setActivity] = useState('');
   const [startDate, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().getTime());
   const [endTime, setEndTime] = useState(new Date().getTime());
   const [description, setDescription] = useState('');
 
-  const addEvent = () => {
-    console.log({startDate});
-    console.log({startTime});
+  const { userCurrentEvents, setUserCurrentEvents} = props;
+
+  const addEvent = async (values) => {
+    // TO DO: TEST BODY OF AXIOS REQUEST TO POST EVENT
+    try {
+      const response = await axios.post('/event',{
+          body: { 
+            ...values
+          }
+      })
+      setUserCurrentEvents([...userCurrentEvents, response]);
+
+  } catch (error) {
+      console.log('error in searching for events function')
+  }
   }
 
   return (
@@ -37,27 +50,20 @@ const EventMaker = () => {
           <option value={'dinner'}>dinner</option>
           <option value={'street fighting'}>street fighting</option>
         </select><br></br>
-        
-        {/* 
-          You can combine date and time into one DatePicker but you will need to parse string.
-          To style the DatePicker itself, you need to import the required css file (the one imported at top already)
-          And override it with your own styling. 
-        */}
+  
         <div className='label-and-picker-container'> 
-          <label htmlFor="date">Select a Date </label>
-          <DatePicker name="date" selected={startDate} onChange={(date) => setDate(date)} />
+            <label htmlFor="date">Select a Date </label>
+            <input className='date-input' type="date" onChange={e => setDate(e.target.value)} />
         </div>
-
+        
         <div className='label-and-picker-container'>
           <label htmlFor="startTime">Select Start Time </label>
-          <DatePicker name="startTime" selected={startTime} onChange={(time) => setStartTime(time)}
-            showTimeSelect showTimeSelectOnly timeIntervals={15} dateFormat="h:mm aa"/>
+          <input className='start-time-input' type="time" onChange={e => setStartTime(e.target.value)}/>
         </div>
 
         <div className='label-and-picker-container'>
           <label htmlFor="endTime">Select End Time </label>
-          <DatePicker name="endTime" selected={endTime} onChange={(time) => setEndTime(time)}
-            showTimeSelect showTimeSelectOnly timeIntervals={15} dateFormat="h:mm aa"/>
+          <input className='start-time-input' type="time" onChange={e => setEndTime(e.target.value)}/>
         </div>
         
         <label htmlFor="description">Description </label>
@@ -73,3 +79,29 @@ const EventMaker = () => {
 
 
 export default EventMaker;
+
+
+
+{/* 
+  You can combine date and time into one DatePicker but you will need to parse string.
+  To style the DatePicker itself, you need to import the required css file (the one imported at top already)
+  And override it with your own styling. 
+
+  This is code using react date picker. Switching to native date picker and time picker for easy string parsing for now.
+  <div className='label-and-picker-container'> 
+    <label htmlFor="date">Select a Date </label>
+    <DatePicker name="date" selected={startDate} onChange={(date) => setDate(date)} />
+  </div>
+
+  <div className='label-and-picker-container'>
+    <label htmlFor="startTime">Select Start Time </label>
+    <DatePicker name="startTime" selected={startTime} onChange={(time) => setStartTime(time)}
+      showTimeSelect showTimeSelectOnly timeIntervals={15} dateFormat="h:mm aa"/>
+  </div>
+
+  <div className='label-and-picker-container'>
+    <label htmlFor="endTime">Select End Time </label>
+    <DatePicker name="endTime" selected={endTime} onChange={(time) => setEndTime(time)}
+      showTimeSelect showTimeSelectOnly timeIntervals={15} dateFormat="h:mm aa"/>
+  </div>
+  */}
