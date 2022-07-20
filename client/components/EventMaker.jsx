@@ -7,13 +7,11 @@ import '../css/inputs.css';
 
 const EventMaker = props => {
   //TO DO: SEND A POST REQUEST TO CREATE NEW EVENT 
-  
-  // Declaring states for each input needed to make an event
-  const [activity, setActivity] = useState('');
+  const [activity, setActivity] = useState(''); // take a default value: maybe 'new activity'? 
   const [startDate, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().getTime());
   const [endTime, setEndTime] = useState(new Date().getTime());
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState(''); // take a default value: maybe 'No details provided'?
 
   const { userCurrentEvents, setUserCurrentEvents} = props;
 
