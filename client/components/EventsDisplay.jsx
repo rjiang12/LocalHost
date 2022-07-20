@@ -1,7 +1,8 @@
 import React from 'react';
 import Event from './Event'
 
-const EventsDisplay = ({eventsData}) => {
+const EventsDisplay = (props) => {
+    const {eventsData} = props;
 
     if (!eventsData.length) return (
         <div>Sorry, no events planned yet!</div>

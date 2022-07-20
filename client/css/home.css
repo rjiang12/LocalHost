@@ -1,0 +1,17 @@
+.home-link {
+  height: 40px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+  text-decoration: none;
+  margin: 40px;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

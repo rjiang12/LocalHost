@@ -25,6 +25,8 @@ const App = () => {
   */
   const [loggedIn, setLoggedIn] = useState(false);
   const [userEvents, setUserEvents] = useState([]);
+  const [userCurrentEvents, setUserCurrentEvents] = useState([]);
+  const [userPastEvents, setUserPastEvents] = useState([]);
   
   // TO DO MOVE THIS TO LOGIN/SIGN UP AS WELL AS PASS DOWN RELEVANT STATE
   const getUserEvents = async () => {
@@ -46,7 +48,7 @@ const App = () => {
                 <Route path = "/" element = {<Home/>}/>
                 <Route path = "/me" element = {<ProfileContainer userEvents = {userEvents}/>}/>
                 <Route path = "/findEvents" element = {<EventsContainer/>}/>
-                <Route path = "/hostEvents" element = {<EventMaker/>}/>
+                <Route path = "/hostEvents" element = {<EventMaker userCurrentEvents={userCurrentEvents} setUserCurrentEvents={setUserCurrentEvents}/>}/>
             </Routes>
           </BrowserRouter>
       </div> )
