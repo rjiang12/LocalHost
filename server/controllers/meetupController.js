@@ -36,7 +36,7 @@ meetUpController.getEvents = async (req, res, next) => {
     const { startDate, activity, time } = req.body; // might be req.body.
     console.log(req.body); 
     // assumes no null values -> default values must be supplied in FE if null. 
-    const sqlQuery = `SELECT * FROM Events WHERE date='${startDate}' AND title='${activity}' AND ('${time}' >= startTime AND '${time}' < endTime)`; 
+    const sqlQuery = `SELECT Users._id, Events.date, Events.starttime, Events.endtime, Events.title, Events.description, Users.fullname FROM Events LEFT JOIN users ON Events.user_id=Users._id WHERE date='${startDate}' AND title='${activity}' AND ('${time}' >= startTime AND '${time}' < endTime)`; 
     const events = await db.query(sqlQuery);
     res.locals.events = events.rows;
     return next(); 
