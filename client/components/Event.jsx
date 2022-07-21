@@ -1,15 +1,16 @@
 import React from 'react';
+import '../css/event.css';
 
 const Event = ({event}) => {
 
 
     return (
         <div className = "Event">
-            Activity: <p>{event.title}</p>
-            Date: <p>{event.date.slice(0, 10)}</p>
-            Start Time: <p>{event.starttime}</p>
-            End Time: <p>{event.endtime}</p>
-            Description: <p>{event.description}</p>
+            <p>Activity: {event.title}</p>
+            <p>Date: {event.date.slice(0, 10)}</p>
+            <p>Start Time: {event.starttime}</p>
+            <p>End Time: {event.endtime}</p>
+            <p>Description: {event.description}</p>
         </div>
     )
 }

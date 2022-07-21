@@ -5,11 +5,18 @@
   align-items: center;
   margin-top: 50px;
 }
+
 .event-maker-input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 35%;
+}
+
+#activity {
+  border-radius: 10px;
+  padding-left: 3px;
+  border: none;
 }
 
 .label-and-picker-container {
@@ -23,4 +30,24 @@
   width: 100%;
   padding: 20px 10px;
   line-height: 48px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 10px;
+}
+
+label {
+  margin-bottom: 3px;
+}
+
+input {
+  border-radius: 10px;
+  padding-left: 8px;
+  border: none;
+}
+
+button {
+  width: 10vw;
+  height: 3rem;
+  border: 1px solid black;
+  border-radius: 20px;
 }
