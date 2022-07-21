@@ -25,8 +25,9 @@ app.use('/', userRouter);
 
 
 app.use((req, res) => {
-    res.sendStatus(404);
-    console.log('unknown route', res.statusCode);
+    // res.sendStatus(404);
+    //console.log('unknown route', res.statusCode);
+    res.status(404).send('Error: Page not found')
   });
 
 // global error handler

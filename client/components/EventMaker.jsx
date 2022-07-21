@@ -6,11 +6,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import '../css/inputs.css';
 
 const EventMaker = props => {
-  const [activity, setActivity] = useState(''); // take a default value: maybe 'new activity'? 
+  const [activity, setActivity] = useState('No activity listed.'); // take a default value: maybe 'new activity'? 
   const [startDate, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().getTime());
   const [endTime, setEndTime] = useState(new Date().getTime());
-  const [description, setDescription] = useState(''); // take a default value: maybe 'No details provided'?
+  const [description, setDescription] = useState('No details provided.'); // take a default value: maybe 'No details provided'?
 
   const { userCurrentEvents, setUserCurrentEvents, userID} = props;
 
@@ -37,6 +37,7 @@ const EventMaker = props => {
       <div className = "event-maker-input">
         <label htmlFor="activity">Activity </label>
         <select name='activity' id="activity" onChange={e => setActivity(e.target.value)}>
+          <option></option>
           <option value={'climbing'}>climbing</option>
           <option value={'hiking'}>hiking</option>
           <option value={'yoga'}>yoga</option>

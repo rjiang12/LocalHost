@@ -13,7 +13,7 @@ const ProfileContainer = props => {
   return (
     <div className = "ProfileContainer">
         <ProfilePictureDisplay/>
-        <ProfileStatsDisplay/>
+        <ProfileStatsDisplay userCurrentEvents={userCurrentEvents} userPastEvents={userPastEvents} />
         <ProfileCurrentEventsDisplay userCurrentEvents={userCurrentEvents}/>
         <ProfilePastEventsDisplay userPastEvents={userPastEvents}/>
     </div>
