@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter} from "react-router-dom";
 import axios from 'axios';
 import './css/styles.css'
 import Navbar from "./components/Navbar.jsx"
@@ -27,9 +27,7 @@ const App = () => {
   */
   const [loggedIn, setLoggedIn] = useState(document.cookie.length > 0);
   // const [userEvents, setUserEvents] = useState([]);
-  const [userCurrentEvents, setUserCurrentEvents] = useState([]);
-  const [userPastEvents, setUserPastEvents] = useState([]);
-  
+
 
   const getCurrentEvents = async () => {
     try {
@@ -51,31 +49,34 @@ const App = () => {
     }
   } 
 
-  useEffect(() => {
-    if(loggedIn) {  
-      getCurrentEvents();
-      getPastEvents();
-    }
-    },[loggedIn]
-  ); 
+  // useEffect(() => {
+  //   if(loggedIn) {  
+  //     getCurrentEvents();
+  //     getPastEvents();
+  //   }
+  //   },[loggedIn]
+  // ); 
 
   useEffect(() => {
     setLoggedIn(document.cookie.length > 0);
-  })
+    if(loggedIn) {
+      setUserID(document.cookie.slice(document.cookie.indexOf('=') + 1));
+    } 
+  }, [])
  
   //If logged in render Navbar and router
   if(loggedIn){
     return ( 
       <div className = "App">
-          <BrowserRouter>
+          <HashRouter>
             <Navbar />
             <Routes>
                 <Route path = "/" element = {<Home/>}/>
-                <Route path = "/me" element = {<ProfileContainer userPastEvents= {userPastEvents} userCurrentEvents = {userCurrentEvents}/>}/>
+                <Route path = "/me" element = {<ProfileContainer userID={userID} setUserID={setUserID}/>}/>
                 <Route path = "/findEvents" element = {<EventsContainer/>}/>
-                <Route path = "/hostEvents" element = {<EventMaker userCurrentEvents={userCurrentEvents} setUserCurrentEvents={setUserCurrentEvents} userID={userID}/>}/>
+                <Route path = "/hostEvents" element = {<EventMaker userID={userID}/>}/>
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
       </div> )
   } // If not logged in render the LoginSignup component
   else {

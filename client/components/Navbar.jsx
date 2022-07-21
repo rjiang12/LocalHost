@@ -5,9 +5,10 @@ import '../css/navbar.css';
 const Navbar = () => {
 
   const logOut = () => {
-    document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
-    const navigate = useNavigate();
-    navigate('/');
+    document.cookie = "SSID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    //const navigate = useNavigate();
+    //navigate('/');
+    window.location.href = 'http://localhost:8080';
     // window.location.reload();
   }
 
