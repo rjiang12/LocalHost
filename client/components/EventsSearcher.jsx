@@ -16,7 +16,7 @@ const EventsSearcher = props => {
               activity: activity,  
               startDate: startDate,
               time: time
-        })
+        });
         setEventsData(response.data);
       } catch (error) {
           console.log('error in searching for events function')

@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/navbar.css';
 
 const Navbar = () => {
 
   const logOut = () => {
     document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`))
-    window.location.reload();
+    const navigate = useNavigate();
+    navigate('/');
+    // window.location.reload();
   }
 
   return (
