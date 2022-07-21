@@ -49,6 +49,7 @@
     "@material-ui/pickers": "^3.3.10",
     "@mui/material": "^5.9.1",
     "@mui/x-date-pickers": "^5.0.0-beta.1",
+    "antd": "^4.21.7",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "bootstrap": "^5.2.0",
