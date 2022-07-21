@@ -11,7 +11,7 @@ const Event = ({event}) => {
             </div>
             <br />
             <div className="dateTime">
-                <p className="date">{event.date.slice(0, 10)}</p>
+                <p className="date">{event.date?.slice(0, 10)}</p>
                 <p className="time">{event.starttime} - {event.endtime}</p>
             </div>
             <br />
