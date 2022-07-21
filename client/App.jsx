@@ -25,7 +25,7 @@ const App = () => {
       EventsMaker needs the setUserEvents state-setter-method to be able to update the 
       userEvents state once a new event is created.
   */
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(document.cookie.length > 0);
   // const [userEvents, setUserEvents] = useState([]);
   const [userCurrentEvents, setUserCurrentEvents] = useState([]);
   const [userPastEvents, setUserPastEvents] = useState([]);
@@ -58,6 +58,10 @@ const App = () => {
     }
     },[loggedIn]
   ); 
+
+  useEffect(() => {
+    setLoggedIn(document.cookie.length > 0);
+  })
  
   //If logged in render Navbar and router
   if(loggedIn){
