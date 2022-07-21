@@ -6,11 +6,20 @@ const Event = ({event}) => {
 
     return (
         <div className = "Event">
-            Activity: <p>{event.title} with {event.fullname}</p>
-            Date: <p>{event.date.slice(0, 10)}</p>
-            Start Time: <p>{event.starttime}</p>
-            End Time: <p>{event.endtime}</p>
-            Description: <p>{event.description}</p>
+            <div className="eventTitle">
+                <p className="activity">{event.title} with {event.fullname}</p>
+            </div>
+            <br />
+            <div className="dateTime">
+                <p className="date">{event.date.slice(0, 10)}</p>
+                <p className="time">{event.starttime} - {event.endtime}</p>
+            </div>
+            <br />
+            <div className="desc">
+                <p className="descriptionHeader">Description: </p>
+                <p className='description'>{event.description}</p>
+            </div>
+            
         </div>
     )
 }

@@ -1,9 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 .Event {
-    border: 1px solid black;
     border-radius: 20px;
     margin: 5%;
     padding: 5%;
     font-family: 'Cabin';
+    width: 35%;
+    margin-left: 25%;
+    transition: filter 1s;
+    background-color: rgba(255, 255, 255, 0.1);
 }
+
+.Event:hover, .Event:focus {
+    filter: invert(1);
+    transition: filter 1.5s;
+    background: linear-gradient(-45deg, #f866053b,#c8ff002a, #66ff0032);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    box-shadow: 10px 5px 5px black; 
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.activity {
+    font-size: 2rem;
+}
+
+.date, .time, .descriptionHeader, .description {
+    font-size: 1rem;
+}
+
+.eventTitle, .dateTime, .desc {
+    padding: 0.5% 0 0.5% 0.5%;
+    border: 1px transparent;
+    border-radius: 10px; 
+    background-color: rgba(255, 255, 255, 0.25);
+    padding-left: 10%;
+}
+
+
