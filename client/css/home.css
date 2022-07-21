@@ -1,0 +1,50 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+
+.home-link {
+  height: 40px;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid black;
+  text-align: center;
+  text-decoration: none;
+  margin: 40px;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* #2b5876, #4e4376 */
+.home-link {
+  margin-top: 10vh;
+  width: 75%;
+  height: 25vh;
+  border: 1px solid black;
+  border-radius: 85px;
+  background: linear-gradient(-45deg, #0799fa, #3700ff, #9900ff, #ff00e6);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite; 
+  -webkit-text-stroke: 5px black;
+  color: transparent;
+  font-size: 8rem;
+  font-family: 'Oswald', sans-serif;
+  font-style: italic;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

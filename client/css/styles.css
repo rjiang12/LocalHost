@@ -1,0 +1,123 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right,#2b5876,#4e4376);
+    
+    height: 100%;
+    width: 100%;
+}
+
+/* login/signup */
+.LoginSignup {
+    display: grid;
+    background-image: linear-gradient(135deg,#2b5876,#4e4376);
+    
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "signup login"; 
+}
+
+.login { 
+    margin: 5%;
+    padding: 5%;
+    padding-left: 25%;
+    grid-area: login; 
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 80vh;
+    transition: filter 1s;
+}
+.form-group input, .form-group button {
+    display: block;
+    margin-top: 13%;
+    margin-bottom: 13%;
+}
+
+.signup { 
+    margin: 5%;
+    padding: 5%;
+    padding-left: 25%;
+    height: 100%;
+    grid-area: signup; 
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    height: 80vh;
+    transition: filter 1s;
+}
+
+.form-group input {
+    background: transparent;
+    outline: 0;
+    border: 0 rgba(0,0,0,0);
+    border-bottom: 2px solid darkgray;
+    transition: border-color 0.5s
+}
+
+.form-group input::placeholder {
+    color: rgb(64, 64, 64);
+}
+
+.form-group input, select, textarea {
+    color: black;
+}
+
+.form-group input:focus, .form-group input:hover {
+    border-bottom: 2px solid #2b5876; 
+}
+
+.login button, .signup button {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #2b5876;
+    border-width: 2px;
+    width: 30%;
+    background-color: transparent;
+    color: #2b5876;
+    font-size: 1.0rem;
+    transition: background-color 0.5s;
+    transition: border-color 0.5s;
+    transition: color 0.5s;
+}
+
+.login button:hover, .signup button:hover {
+    border-color: #2b5876;
+    color: lightgray;
+    background-color: #2b5876;
+}
+
+.login h2, .signup h2 {
+    font-size: 4.5rem;
+}
+
+.login:hover, .login:focus, .signup:hover, .signup:focus {
+    filter: invert(1.0);
+    border: none;
+    transition: filter 1s;
+}
+
+.ProfileStatsDisplay {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 2%;
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 20%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ProfileStatsDisplay .top, .ProfileStatsDisplay .bottom {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    flex: 0.5;
+}
+
+.ProfileStatsDisplay .top {
+    margin-right: 5%;
+}
+
