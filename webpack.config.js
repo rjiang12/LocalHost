@@ -13,11 +13,13 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
     devServer: {
+      historyApiFallback: true,
+      hot: true,
       static: {
           directory: path.join(__dirname, 'build'),
       },
       proxy: {
-        '/api/*': 'http://localhost:3000'
+        '*': 'http://localhost:3000'
       },
       compress: true,
       port: 8080,

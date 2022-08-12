@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 1.2rem;
+  background: linear-gradient(-45deg, #0799fa, #3700ff, #9900ff, #ff4fed);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black; 
+}
+

@@ -1,0 +1,17 @@
+Stretch Features
+
+Stretch (but not super stretch) Features
+adding a real password to database
+Like Post
+Delete Post
+Edit Post
+Sign Up Page // Would require adding separate DB table with username (p-key), password and first_name, last_name
+
+Real Stretch Features
+(building out match results)
+adding chat capability to coordinate times
+map capability to generate middle location
+
+(dynamically creating list of activities)
+Adding new activities
+Text match / regex to make it more flexible.
