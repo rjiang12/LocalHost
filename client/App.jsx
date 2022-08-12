@@ -85,10 +85,9 @@ const App = () => {
       <div className = "App">
         <LoginSignup loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserID={setUserID} />
       </div>
+
     )
   }
 }
 
 export default App;
-
-
